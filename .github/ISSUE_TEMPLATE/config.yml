@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report a security problem
+    url: https://github.com/KoG-teeworlds/.github/blob/main/SECURITY.md
+    about: Please do not open a public issue for a security problem.
+  - name: Community and documentation
+    url: https://community.kog.tw
+    about: Rules, guides and community pages.
