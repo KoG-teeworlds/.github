@@ -1,0 +1,45 @@
+name: Task
+description: A piece of work that someone (or an AI agent) can pick up and finish
+labels: ["type:task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Write this for someone with no context. If it has context, acceptance criteria and a way to test,
+        a maintainer can add the label `agent-ready` and an agent may take it.
+        Never paste a secret, a token or personal data here.
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why this is needed and what exists today. Link the related issues, pull requests and files.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: A checklist. The task is done when every box can be ticked.
+      placeholder: "- [ ] ..."
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: How to test
+      description: The commands or steps that show it works.
+    validations:
+      required: true
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of scope
+    validations:
+      required: false
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks
+      description: What could go wrong, and what must not be touched (game servers with players, secrets, private images).
+    validations:
+      required: false
