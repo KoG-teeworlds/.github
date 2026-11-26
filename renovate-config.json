@@ -1,0 +1,92 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": [
+    "Shared Renovate policy for KoG-teeworlds repositories.",
+    "Security updates bypass the normal schedule and limits; major updates always require manual approval."
+  ],
+  "extends": [
+    "config:recommended"
+  ],
+  "timezone": "Europe/Vienna",
+  "schedule": [
+    "after 10pm every weekday",
+    "every weekend",
+    "before 5am every weekday"
+  ],
+  "dependencyDashboard": {
+    "enabled": true,
+    "title": "Dependency Dashboard"
+  },
+  "labels": [
+    "dependencies"
+  ],
+  "prConcurrentLimit": 6,
+  "branchConcurrentLimit": 8,
+  "prHourlyLimit": 2,
+  "rebaseWhen": "behind-base-branch",
+  "platformAutomerge": false,
+  "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "schedule": [
+      "at any time"
+    ],
+    "labels": [
+      "dependencies",
+      "security"
+    ],
+    "minimumReleaseAge": null,
+    "prCreation": "immediate",
+    "automerge": false
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": [
+      "before 5am on monday"
+    ],
+    "automerge": false
+  },
+  "packageRules": [
+    {
+      "description": "Group and automerge stable patch, pin, and digest updates only after the exact head passes required checks",
+      "matchUpdateTypes": [
+        "patch",
+        "pin",
+        "pinDigest",
+        "digest"
+      ],
+      "matchCurrentVersion": "!/^0/",
+      "groupName": "safe patch and digest updates",
+      "groupSlug": "safe-patch-digest",
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": false
+    },
+    {
+      "description": "Group stable minor updates for manual review",
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "matchCurrentVersion": "!/^0/",
+      "groupName": "minor dependency updates",
+      "groupSlug": "minor-dependencies",
+      "automerge": false
+    },
+    {
+      "description": "Treat all pre-1.0 updates as potentially breaking",
+      "matchCurrentVersion": "/^0/",
+      "groupName": "pre-1.0 dependency updates",
+      "groupSlug": "pre-1-0-dependencies",
+      "automerge": false
+    },
+    {
+      "description": "Require explicit Dependency Dashboard approval for major updates",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "dependencyDashboardApproval": true,
+      "automerge": false
+    }
+  ]
+}
