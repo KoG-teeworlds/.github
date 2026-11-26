@@ -1,0 +1,20 @@
+name: Bug report
+description: Something does not work as it should
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, what happened instead?
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where?
+      description: Server name, map, page or version.
+  - type: textarea
+    id: more
+    attributes:
+      label: Anything else?
+      description: Screenshots or logs help. Please do not include passwords or other people's data.
