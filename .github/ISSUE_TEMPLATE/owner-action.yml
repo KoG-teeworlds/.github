@@ -1,0 +1,36 @@
+name: Owner action
+description: Something only the owner can do, such as a secret, an account, a payment or a decision
+labels: ["type:owner-action", "needs-owner"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when the work needs a value or a decision that only the owner holds.
+        Do not write the value here: say what is needed and where it goes.
+  - type: textarea
+    id: what
+    attributes:
+      label: What to do
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: What is blocked or at risk without it.
+    validations:
+      required: true
+  - type: textarea
+    id: how
+    attributes:
+      label: How
+      description: Numbered steps, as exact as possible, so it takes minutes.
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when
+      placeholder: "- [ ] ..."
+    validations:
+      required: true
